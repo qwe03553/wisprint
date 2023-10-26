@@ -1,0 +1,219 @@
+.bootstrap-dialog .modal-header {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px
+}
+
+.bootstrap-dialog .bootstrap-dialog-title {
+	color: #fff;
+	display: inline-block;
+	font-size: 16px
+}
+
+.bootstrap-dialog .bootstrap-dialog-message {
+	font-size: 14px
+}
+
+
+.bootstrap-dialog .bootstrap-dialog-button-icon {
+	margin-right: 3px
+}
+
+.bootstrap-dialog .bootstrap-dialog-close-button {
+	font-size: 20px;
+	float: right;
+	opacity: .9;
+	filter: alpha(opacity = 90)
+}
+
+.bootstrap-dialog .bootstrap-dialog-close-button:hover {
+	cursor: pointer;
+	opacity: 1;
+	filter: alpha(opacity = 100)
+}
+
+.bootstrap-dialog.type-default .modal-header {
+	background-color: #fff
+}
+
+.bootstrap-dialog.type-default .bootstrap-dialog-title {
+	color: #333
+}
+
+.bootstrap-dialog.type-info .modal-header {
+	background-color: #5bc0de
+}
+
+.bootstrap-dialog.type-primary .modal-header {
+	background-color: #337ab7
+}
+
+.bootstrap-dialog.type-success .modal-header {
+	background-color: #5cb85c
+}
+
+.bootstrap-dialog.type-warning .modal-header {
+	background-color: #f0ad4e
+}
+
+.bootstrap-dialog.type-danger .modal-header {
+	background-color: #d9534f
+}
+
+.bootstrap-dialog.size-large .bootstrap-dialog-title {
+	font-size: 24px
+}
+
+.bootstrap-dialog.size-large .bootstrap-dialog-close-button {
+	font-size: 30px
+}
+
+.bootstrap-dialog.size-large .bootstrap-dialog-message {
+	font-size: 18px
+}
+
+.bootstrap-dialog .icon-spin {
+	display: inline-block;
+	-moz-animation: spin 2s infinite linear;
+	-o-animation: spin 2s infinite linear;
+	-webkit-animation: spin 2s infinite linear;
+	animation: spin 2s infinite linear
+}
+
+.modal-header
+{
+	padding:8px;background-color: transparent!important;background: url("cp_pop_title_center.jpg") -5px repeat-x!important;border-radius:0;
+
+	
+}
+.modal-content
+{
+	 border-radius:0;
+}
+.bootstrap-dialog .bootstrap-dialog-title {
+	color: #317eac;
+	display: inline-block;
+	font-weight:700;
+	font-size: 16px
+}
+
+@
+-moz-keyframes spin { 0%{
+	-moz-transform: rotate(0deg)
+}
+
+100%{
+-moz-transform
+:rotate(359deg)
+}
+}
+@
+-webkit-keyframes spin { 0%{
+	-webkit-transform: rotate(0deg)
+}
+
+100%{
+-webkit-transform
+:rotate(359deg)
+}
+}
+@
+-o-keyframes spin { 0%{
+	-o-transform: rotate(0deg)
+}
+
+100%{
+-o-transform
+:rotate(359deg)
+}
+}
+@
+-ms-keyframes spin { 0%{
+	-ms-transform: rotate(0deg)
+}
+
+100%{
+-ms-transform
+:rotate(359deg)
+}
+}
+@
+keyframes spin { 0%{
+	transform: rotate(0deg)
+}
+100%{
+transform
+:rotate(359deg)
+}
+}
+
+
+
+.buttonNormal
+{
+    width: 65px;
+    height: 24px;
+    background: url(fw_btn_blue_bg.png) repeat-x;
+    color: white;
+    font-size: 12px;
+    line-height: 24px;
+    cursor: default;
+    border: 0px;
+    text-align: center;
+    display: inline-block;
+    margin-left:3px;
+}
+
+.buttonNormal:active
+{
+    border-top: 1px solid #5099dd;
+    border-bottom: 1px solid #5099dd;
+    height: 22px;
+    background: white url(fw_btn_blue_actived_bg.png) repeat-x;
+}
+.textBoxNormalReadOnly
+{
+    padding-left: 3px;
+    border: silver 1px solid;
+    width: 200px;
+    height: 20px;
+    line-height: 20px;
+    color: #707070;
+    background-color: #F1F1F1;
+    font-size: 14px;
+}
+
+.bootstrap-dialog-close-button .close {
+	color: #b1ccda;
+	opacity: 0.5
+}
+.bootstrap-dialog-close-button .close:focus,
+	.bootstrap-dialog-close-button  .close:hover {
+	opacity: 1.0
+}
+
+.alert-dialog .modal-dialog {
+	width: 370px;
+}
+
+.alert-dialog .modal-footer {
+	text-align: center;
+}
+
+.bootstrap-dialog.modeless {
+  top: 20%;
+  left: 25%;
+  bottom: auto;
+  right: auto;
+  padding:17px;
+}
+.bootstrap-dialog.modeless .modal-dialog {
+  margin-top: 0px;
+  margin-bottom: 0px;
+ 
+}
+
+.toolsbox-dialog .modal-header { padding:2px 8px;}
+
+
+.toolsbox-dialog  .bootstrap-dialog-title{font-weight:normal;font-size:12px;}
+

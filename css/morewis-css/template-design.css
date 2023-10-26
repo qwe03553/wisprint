@@ -1,0 +1,338 @@
+@charset "UTF-8";
+
+/*=S 生产日期弹窗  */
+.product-date-dialog.modal-dialog,
+.batch-code-dialog.modal-dialog {
+	left: calc(50% - 200px);
+	width: 400px;
+}
+.product-date-dialog .modal-body,
+.batch-code-dialog .modal-body {
+	padding: 10px 24px;
+	width: 400px;
+	height: 120px;
+}
+		
+.product-date-dialog .form-control {
+	width: 250px;
+}
+		
+.product-date-dialog .row-center,
+.batch-code-dialog .row-center {
+	height: 50px;
+}
+
+.product-date-dialog .layui-form-switch,
+.batch-code-dialog .layui-form-switch {
+	margin-top: 0;
+	width: 45px;
+}
+
+/*=S 节点高亮 */
+.dom-highlight {
+	position: absolute;
+	top: -10px;
+	left: -10px;
+	height: calc(100% + 20px);
+	width: calc(100% + 20px);
+	border: 2px solid #F24657;
+	border-radius: 5px;
+}
+/*=E 节点高亮 */
+
+.jp-page {
+	transform: scale(1);
+}
+
+
+/*=S 放大工具栏 */
+.page-magnification-tool {
+	display: inline-flex;
+    align-items: center;
+}
+.page-magnification-tool>button {
+    margin-left: 10px;
+    height: 30px;
+    width: 30px;
+    background: none;
+    outline: none;
+    border: none;
+}
+.page-magnification-tool>button>.iconfont {
+    font-size: 16px;
+    font-weight: 700;
+}
+.page-magnification-tool > input {
+	width: 50px;
+    border: 1px solid #666;
+    border-radius: 3px;
+    height: 25px;
+    text-align: center;
+}
+/*=E 放大工具栏 */
+
+/*=S 自定义数据项样式  */
+/*==S 外箱自定义 */
+#isOuterBox ~ .custom-field-add {
+    display: inline-block;
+}
+#isOuterBox:checked ~ .custom-field-add {
+    display: none;
+}
+
+#isOuterBox ~ .select-material-custom {
+    display: none;
+}
+#isOuterBox:checked ~ .select-material-custom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.select-material-template,
+.select-custom-field {
+    display: inline-block;
+    width: 180px;
+    margin-right: 20px;
+}
+
+.select-material-template xm-select > .xm-body {
+    width: 400px;
+}
+
+.xm-option-content-code {
+	width: 60%;
+}
+
+.xm-option-content-name {
+	width: 40%;
+    text-align: right;
+}
+
+.field-name,
+.text-over-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ui-state-default .text-over-ellipsis {
+	display: inline-block;
+    width: 100%;
+    height: 100%;
+	-webkit-line-clamp: 2;
+	white-space: normal;
+}
+
+.field-name {
+	display: inline-block;
+    width: calc(100% - 52px);
+    vertical-align: middle;
+}
+
+.select-custom-field .text-over-ellipsis {
+    width: 220px;
+}
+/*==E 外箱自定义 */
+
+.custom-field.default-table {
+	margin-top: 10px;
+    width: 100%;
+}
+        
+.custom-field .iconfont {
+	float: none;
+	font-weight: 700;
+	color: #2c3a48;
+	font-size: 16px;
+}
+
+.custom-field .iconfont + .iconfont {
+    margin-left: 5px;
+}
+
+.custom-field td:nth-child(1) {
+	padding-left: 10px;
+	text-align: left;
+}
+
+.custom-field td:nth-child(1) input[type="text"] {
+	width: 100%;
+	height: 100%;
+	text-align: left;
+}
+
+.custom-field td:nth-child(1) input[type="text"]::placeholder {
+	color: #ddd;
+}
+
+/*.custom-field td:nth-child(2) {
+	width: 100px;
+}
+
+.custom-field td:nth-child(3) {
+	width: 80px;
+}*/
+.custom-field td[name="format"] {
+    width: 180px;
+}
+.custom-field td[name="required"] {
+    width: 80px;
+}
+.custom-field td[name="operation"] {
+    width: 80px;
+}
+
+.custom-field-name {
+    width: 100%;
+    display: inline-block;
+	color: #333;
+    line-height: 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-date-dialog .layui-form-switch i,
+.custom-field .layui-form-switch i,
+.batch-code-dialog .layui-form-switch i {
+	top: 2px;
+}
+
+.open-custom-field {
+	width: 100%;
+	height: 35px;
+	background: #fff;
+	border: none;
+	outline: none;
+	word-break: keep-all;
+    white-space: nowrap;
+}
+
+.open-custom-field .iconfont {
+	font-weight: 700;
+}
+
+.open-custom-field span {
+    vertical-align: middle;
+    word-break: keep-all;
+}
+
+.custom-field-add {
+	width: 70px;
+    height: 28px;
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+}
+/*=E 自定义数据项样式 */
+
+/*=S 菜单*/
+.com-menu {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    background-color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.com-menu-input {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.com-menu-input:hover {
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    box-shadow: 5px 5px 13px #e3e3e3, -5px -5px 13px #ffffff;
+}
+
+.com-menu-list {
+    position: absolute;
+    height: 0;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #e3e3e3, -1px -1px 5px #ffffff;
+    overflow: hidden;
+    list-style: none;
+    transition: all 0.3s ease-out;
+}
+
+.com-menu-list li {
+    height: 30px;
+    line-height: 30px;
+}
+
+.com-menu-list li:hover {
+    border-radius: 2px;
+    background: #ffffff;
+    box-shadow: inset 5px 5px 13px #e3e3e3, inset -5px -5px 13px #ffffff;
+}
+
+.com-menu-input:hover ~ .com-menu-list,
+.com-menu-list:hover {
+    height: 150px;
+}
+/*=E 菜单*/
+
+.com-tooltip-content {
+	z-index: 1000000;
+}
+
+.customize-data-item-container .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    height: 30px;
+    line-height: 30px;
+    border-top: 1px solid #ccc;
+}
+.customize-data-item-container .title {
+	font-size: 15px;
+    font-weight: 700;
+}
+
+.customize-data-item-container .head .iconfont {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #333;
+    line-height: 18px;
+    text-align: center;
+    color: #333;
+    cursor: pointer;
+    font-weight: 700;
+}
+.customize-data-item-container .head .icon-add:hover {
+    border-color: #000;
+    color: #000;
+}
+#jp-customize-comp-list li input {
+    height: 25px;
+    border: 1px solid #999;
+    margin: 0 10px;
+}
+#jp-customize-comp-list .iconfont {
+    font-weight: 700;
+    cursor: pointer;
+}
+#jp-customize-comp-list .iconfont + .iconfont {
+    margin-left: 5px;
+}
+.jp-comp-container.com-scroll {
+    height: 60%;
+    overflow: auto;
+}
+.customize-data-item-container {
+    height: 40%;
+}
+#jp-customize-comp-list {
+    height: calc(100% - 30px);
+    overflow: auto;
+}

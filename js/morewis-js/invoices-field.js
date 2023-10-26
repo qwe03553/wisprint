@@ -1,0 +1,1625 @@
+/*
+ * @Description: 单据预览以及模板设计需要的数据
+ * @version: 1.0.0
+ * @Author: zhouhan
+ * @Date: 2021-07-16 09:17:50
+ * @LastEditors: zhouhan
+ * @LastEditTime: 2021-07-16 15:20:39
+ */
+
+/* mes
+// 1是产品 -- 单据
+// 2是设备 -- 单据
+// 3是模具 -- 单据
+// 4是生产工单 -- 单据
+// 5是采购单 -- 单据
+// 6是销售 -- 单据
+// 7是出库 -- 单据
+// 8是入库 -- 单据
+// 9是申购 -- 单据
+// 10委外字段
+// 11备货字段
+// 12批量硫化标签
+*/
+
+// 1 物料(产品)字段
+const MATERIAL_FIELD = [
+    {
+        // 模板设计需要字段区分控件类型
+        type: 'text',
+        // 模板设计需要字段，字段名
+        field: '产品SN',
+        // 预览模拟数据
+        demo: 'SN220107001',
+        // 接口返回的字段名
+        fieldName: 'SN'
+    },
+    {
+        type: 'text',
+        field: '物料名称',
+        demo: '0V 9622皮囊',
+        fieldName: 'PRO_NAME'
+    },
+    {
+        type: 'text',
+        field: '物料编码',
+        demo: '3296220011',
+        fieldName: 'PRO_CODE'
+    },
+    {
+        type: 'text',
+        field: '物料规格',
+        demo: 'SMT',
+        fieldName: 'PRO_SPEC'
+    },
+    {
+        type: 'text',
+        field: '物料单位',
+        demo: 'PCS',
+        fieldName: 'PRO_UNIT'
+    },
+    {
+        type: 'text',
+        field: '物料数量',
+        demo: '1',
+        fieldName: 'PRO_NUM'
+    },
+   
+    {
+        type: 'text',
+        field: '入库时间',
+        demo: '2023/08/16',
+        fieldName: 'IN_DATE'
+    },
+    {
+        type: 'text',
+        field: '备注',
+        demo: '备注',
+        fieldName: 'MEMO'
+    }
+];
+
+// 2 设备字段
+const EQUIPMENT_FIELD = [
+    {
+        // 模板设计需要字段区分控件类型
+        type: 'text',
+        // 模板设计需要字段，字段名
+        field: '设备编码',
+        // 预览模拟数据
+        demo: 'SN220107001',
+        // 接口返回的字段名
+        fieldName: 'EM_SYS_CODE'
+    },
+    {
+        type: 'text',
+        field: '设备名称',
+        demo: '数控机床',
+        fieldName: 'EM_NAME'
+    },
+    {
+        type: 'text',
+        field: '设备型号',
+        demo: 'W1234',
+        fieldName: 'EM_MODEL'
+    },
+    {
+        type: 'text',
+        field: '设备类型',
+        demo: 'SMT',
+        fieldName: 'EM_TYPE_VAL'
+    },
+    {
+        type: 'text',
+        field: '设备位置',
+        demo: '右侧',
+        fieldName: 'EM_POSITION_VAL'
+    },
+    {
+        type: 'text',
+        field: '设备价格',
+        demo: '100',
+        fieldName: 'EM_PRICE'
+    },
+    {
+        type: 'text',
+        field: '设备厂商',
+        demo: '浪花',
+        fieldName: 'EM_MAKER'
+    },
+    {
+        type: 'text',
+        field: '设备供应商',
+        demo: '浪花',
+        fieldName: 'EM_SUPPLIER'
+    },
+    {
+        type: 'text',
+        field: '设备出厂年月',
+        demo: '2022/09/15',
+        fieldName: 'EM_LEAVE_DATE'
+    },
+    {
+        type: 'text',
+        field: '设备投产时间',
+        demo: '2022/02/12',
+        fieldName: 'EM_INVEST_TIME'
+    },
+    {
+        type: 'text',
+        field: '折旧年限',
+        demo: '3',
+        fieldName: 'USEFUL_LIFE'
+    },
+    {
+        type: 'text',
+        field: '备注',
+        demo: '备注',
+        fieldName: 'MEMO'
+    }
+];
+
+// 3 模具字段
+const MOULD_FIELD = [
+    {
+        // 模板设计需要字段区分控件类型
+        type: 'text',
+        // 模板设计需要字段，字段名
+        field: '模具编码',
+        // 预览模拟数据
+        demo: 'M2201070001',
+        // 接口返回的字段名
+        fieldName: 'MOULD_CODE'
+    },
+    {
+        type: 'text',
+        field: '模具名称',
+        demo: '3D模具',
+        fieldName: 'MOULD_NAME'
+    },
+    {
+        type: 'text',
+        field: '模具规格',
+        demo: '111',
+        fieldName: 'MOULD_SPEC'
+    },
+    {
+        type: 'text',
+        field: '模具状态',
+        demo: '故障',
+        fieldName: 'MOULD_STATUS_VAL'
+    },
+    {
+        type: 'text',
+        field: '模具类型',
+        demo: '内部',
+        fieldName: 'MOULD_TYPE_VAL'
+    },
+    {
+        type: 'text',
+        field: '模具来源',
+        demo: '自制',
+        fieldName: 'MOULD_SOURCE_VAL'
+    },
+    {
+        type: 'text',
+        field: '模具价格',
+        demo: '100',
+        fieldName: 'MOULD_PRICE'
+    },
+    {
+        type: 'text',
+        field: '模具穴数',
+        demo: '10',
+        fieldName: 'HOLE_NUM'
+    },
+    {
+        type: 'text',
+        field: '关联客户',
+        demo: '张三',
+        fieldName: 'CS_NAME'
+    },
+    {
+        type: 'text',
+        field: '模具厂商',
+        demo: '摩尔',
+        fieldName: 'MOULD_MAKER'
+    },
+    {
+        type: 'text',
+        field: '模具生产日期',
+        demo: '2022/09/15',
+        fieldName: 'MAKE_DATE'
+    }
+];
+
+// 4 生产工单字段
+const PRODUCTION_FIELD = [
+    {
+        // 模板设计需要字段区分控件类型
+        type: 'text',
+        // 模板设计需要字段，字段名
+        field: '生产工单号',
+        // 预览模拟数据
+        demo: 'GD0001',
+        // 接口返回的字段名
+        fieldName: 'ORDER_CODE'
+    },
+    {
+        type: 'text',
+        field: '合同号',
+        demo: '合同号',
+        fieldName: 'CONTRACT_CODE'
+    },
+    {
+        type: 'text',
+        field: '产品名称',
+        demo: '汽车',
+        fieldName: 'PRO_NAME'
+    },
+    {
+        type: 'text',
+        field: '产品规格',
+        demo: '100',
+        fieldName: 'PRO_SPEC'
+    },
+    {
+        type: 'text',
+        field: '计划开始时间',
+        demo: '2022-01-31',
+        fieldName: 'PLAN_START_TIME'
+    },
+    {
+        type: 'text',
+        field: '计划结束时间',
+        demo: '2022-02-01',
+        fieldName: 'PLAN_END_TIME'
+    },
+    {
+        type: 'text',
+        field: '计划数量',
+        demo: '2022-01-31',
+        fieldName: 'PLAN_QUANTITY'
+    },
+    {
+        type: 'text',
+        field: '备注',
+        demo: '备注',
+        fieldName: 'MEMO'
+    },
+    /*{
+        type: 'table',
+        dataset: '关联模具',
+        fields: [
+            {
+                type: 'text',
+                field: '模具名称',
+                demo: '熔炼',
+                fieldName: 'serial_number',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '模具规格',
+                demo: '100',
+                fieldName: 'item_number',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '关联客户',
+                demo: '摩尔',
+                fieldName: 'material_code',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '模具穴数',
+                demo: '10',
+                fieldName: 'material_name',
+                rule: '1'
+            },
+            {
+                type: 'text',
+                field: '制壳数量',
+                demo: '10',
+                fieldName: 'material_spec'
+            }
+        ]
+    },*/
+    {
+        type: 'table',
+        dataset: '工序',
+        fields: [
+            {
+                type: 'text',
+                field: '工序序号',
+                demo: 1,
+                fieldName: 'GROUP_SEQ',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '工序名称',
+                demo: '熔炼',
+                fieldName: 'GROUP_NAME',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '工位名单',
+                demo: '张三',
+                fieldName: 'AM_NAME',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '报工方式',
+                demo: '个人报工',
+                fieldName: 'REPORT_TYPE_VAL',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '设备',
+                demo: '线性轴承',
+                fieldName: 'EM_NAME',
+                rule: '1'
+            },
+            {
+                type: 'text',
+                field: '计薪方式',
+                demo: '计件',
+                fieldName: 'SALARY_TYPE_VAL'
+            },
+            {
+                type: 'text',
+                field: '计划数量',
+                demo: '50',
+                fieldName: 'PLAN_QUANTITY'
+            },
+            {
+                type: 'text',
+                field: '计划开始时间',
+                demo: '2022-01-07',
+                fieldName: 'PLAN_BEGIN_TIME'
+            },
+            {
+                type: 'text',
+                field: '计划结束时间',
+                demo: '2022-01-15',
+                fieldName: 'PLAN_END_TIME'
+            },
+            {
+                type: 'text',
+                field: '不良品项',
+                demo: '工序不良',
+                fieldName: 'REJECTS_ITEM_VAL'
+            },
+            {
+                type: 'text',
+                field: '备注',
+                demo: '备注',
+                fieldName: 'MEMO'
+            }
+        ]
+    }
+];
+
+// 5 采购单字段
+const PURCHASE_FIELD = [
+    {
+        type: 'text',
+        field: '单据号',
+        demo: 'CG2201100001',
+        fieldName: 'PURCHASE_CODE'
+    },
+    {
+        type: 'text',
+        field: '供应商名称',
+        demo: '供应商',
+        fieldName: 'CS_NAME'
+    },
+    {
+        type: 'text',
+        field: '采购日期',
+        demo: '2022-02-07',
+        fieldName: 'PURCHASE_DATE'
+    },
+    {
+        type: 'text',
+        field: '已入库数量',
+        demo: '100',
+        fieldName: 'SUM'
+    },
+    {
+        type: 'text',
+        field: '状态',
+        demo: '开立',
+        fieldName: 'AUDIT_STATUS'
+    },
+    {
+        type: 'text',
+        field: '合同号',
+        demo: 'hth123456789',
+        fieldName: 'CONTRACT_CODE'
+    },
+    {
+        type: 'text',
+        field: '跟单员',
+        demo: '跟单员',
+        fieldName: 'PURCHASE_PERSON'
+    },
+    {
+        type: 'text',
+        field: '是否开票',
+        demo: '否',
+        fieldName: 'IS_INVOICING'
+    },
+    {
+        type: 'text',
+        field: '备注',
+        demo: '备注',
+        fieldName: 'MEMO'
+    },
+    {
+        type: 'text',
+        field: '预定交期',
+        demo: '2022-04-07',
+        fieldName: 'RESERVE_DATE'
+    },
+    {
+        type: 'text',
+        field: '数量合计',
+        demo: '100',
+        fieldName: 'PURCHASE_QUANTITY'
+    },
+    {
+        type: 'text',
+        field: '金额合计',
+        demo: '1000',
+        fieldName: 'TOTAL'
+    },
+    {
+        type: 'table',
+        dataset: '明细',
+        fields: [
+            {
+                type: 'text',
+                field: '产品编码',
+                demo: 'P220107000',
+                fieldName: 'PRO_CODE',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品名称',
+                demo: '轮胎',
+                fieldName: 'PRO_NAME',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品规格',
+                demo: '100',
+                fieldName: 'PRO_SPEC',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品单位',
+                demo: '个',
+                fieldName: 'PRO_UNIT',
+                rule: '1'
+            },
+            {
+                type: 'text',
+                field: '产品数量',
+                demo: 7200,
+                fieldName: 'PRODUCT_QUANTITY',
+                rule: '1'
+            },
+            {
+                type: 'text',
+                field: '产品单价',
+                demo: 50,
+                fieldName: 'PRICE'
+            },
+            {
+                type: 'text',
+                field: '付款状态',
+                demo: '付款中',
+                fieldName: 'PAY_STATUS_VAL'
+            },
+            {
+                type: 'text',
+                field: '关联单据',
+                demo: 'SG2201100001',
+                fieldName: 'SALES_CODE'
+            },
+            {
+                type: 'text',
+                field: '计划交货日期',
+                demo: '2022-04-07',
+                fieldName: 'DELIVERY_TIME'
+            },
+            {
+                type: 'text',
+                field: '备注',
+                demo: '备注',
+                fieldName: 'MEMO',
+                rule: 1
+            }
+        ]
+    }
+];
+
+// 6 销售单字段
+const SALES_FIELD = [
+	{
+        type: 'text',
+        field: '单据号',
+        demo: 'XS2201100001',
+        fieldName: 'SALES_CODE'
+    },
+    {
+        type: 'text',
+        field: '客户名称',
+        demo: '客户',
+        fieldName: 'CS_NAME'
+    },
+    {
+        type: 'text',
+        field: '计划交货日期',
+        demo: '2022-02-09',
+        fieldName: 'PLAN_DATE'
+    },
+    {
+        type: 'text',
+        field: '已出库数量',
+        demo: '100',
+        fieldName: 'SUM'
+    },
+    {
+        type: 'text',
+        field: '委外数量',
+        demo: '100',
+        fieldName: 'OUTSOURCE_QUANTITY'
+    },
+    {
+        type: 'text',
+        field: '状态',
+        demo: '开立',
+        fieldName: 'AUDIT_STATUS'
+    },
+    {
+        type: 'text',
+        field: '合同号',
+        demo: 'hth123456789',
+        fieldName: 'CONTRACT_CODE'
+    },
+    {
+        type: 'text',
+        field: '跟单员',
+        demo: '跟单员',
+        fieldName: 'SALES_PERSON'
+    },
+    {
+        type: 'text',
+        field: '联系人',
+        demo: '联系人',
+        fieldName: 'CONTACT_PERSON'
+    },
+    {
+        type: 'text',
+        field: '是否开票',
+        demo: '否',
+        fieldName: 'IS_INVOICING'
+    },
+    {
+        type: 'text',
+        field: '备注',
+        demo: '备注',
+        fieldName: 'MEMO'
+    },
+    {
+        type: 'text',
+        field: '数量合计',
+        demo: '100',
+        fieldName: 'SALES_QUANTITY'
+    },
+    {
+        type: 'text',
+        field: '金额合计',
+        demo: '1000',
+        fieldName: 'TOTAL'
+    },
+    {
+        type: 'table',
+        dataset: '明细',
+        fields: [
+            {
+                type: 'text',
+                field: '产品编码',
+                demo: 'P220107000',
+                fieldName: 'PRO_CODE',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品名称',
+                demo: '汽车',
+                fieldName: 'PRO_NAME',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品规格',
+                demo: '20*40',
+                fieldName: 'PRO_SPEC',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品单位',
+                demo: '个',
+                fieldName: 'PRO_UNIT',
+                rule: '1'
+            },
+            {
+                type: 'text',
+                field: '产品数量',
+                demo: 1000,
+                fieldName: 'PRODUCT_QUANTITY',
+                rule: '1'
+            },
+            {
+                type: 'text',
+                field: '产品单价',
+                demo: 100,
+                fieldName: 'PRICE'
+            },
+            {
+                type: 'text',
+                field: '收款状态',
+                demo: '未收款',
+                fieldName: 'RECEIVE_STATUS_VAL'
+            },
+            /* {
+                type: 'text',
+                field: '关联单据',
+                demo: 'XS2201100001',
+                fieldName: 'material_group'
+            }, */
+            {
+                type: 'text',
+                field: '备注',
+                demo: '备注',
+                fieldName: 'MEMO',
+                rule: 1
+            }
+        ]
+    }
+];
+
+// 7 出库订单字段
+const OUT_STORAGE_FIELD = [
+    {
+        type: 'text',
+        field: '单据号',
+        demo: 'CK2202070002',
+        fieldName: 'OUT_CODE'
+    },
+    {
+        type: 'text',
+        field: '所属仓库',
+        demo: '中央仓库',
+        fieldName: 'WAREHOUSE'
+    },
+    {
+        type: 'text',
+        field: '计划出库日期',
+        demo: '2022-02-07',
+        fieldName: 'PLAN_OUT_DATE'
+    },
+    {
+        type: 'text',
+        field: '出库类型',
+        demo: '销售出库',
+        fieldName: 'OUT_TYPE'
+    },
+    {
+        type: 'text',
+        field: '工单号',
+        demo: 'GD0252',
+        fieldName: 'ORDER_CODE'
+    },
+    {
+        type: 'text',
+        field: '数量合计',
+        demo: '100',
+        fieldName: 'OUT_QUANTITY'
+    },
+    {
+        type: 'text',
+        field: '金额合计',
+        demo: '1000',
+        fieldName: 'TOTAL'
+    },
+    {
+        type: 'table',
+        dataset: '明细',
+        fields: [
+            {
+                type: 'text',
+                field: '产品名称',
+                demo: '测试产品',
+                fieldName: 'PRO_NAME',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品编码',
+                demo: 'P2110200001',
+                fieldName: 'PRO_CODE',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品规格',
+                demo: '100',
+                fieldName: 'PRO_SPEC',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品单位',
+                demo: '个',
+                fieldName: 'PRO_UNIT',
+                rule: '1'
+            },
+            {
+                type: 'text',
+                field: '库区',
+                demo: '库区',
+                fieldName: 'LOCATION_NAME',
+                rule: '1'
+            },
+            {
+                type: 'text',
+                field: '产品数量',
+                demo: '100',
+                fieldName: 'PRODUCT_QUANTITY'
+            },
+            {
+                type: 'text',
+                field: '关联单据',
+                demo: 'XS2112310002',
+                fieldName: 'RELATION_CODE'
+            },
+            {
+                type: 'text',
+                field: '产品单价',
+                demo: '100',
+                fieldName: 'PRICE'
+            },
+            {
+                type: 'text',
+                field: '备注',
+                demo: '备注',
+                fieldName: 'MEMO',
+                rule: 1
+            }
+        ]
+    }
+];
+
+// 8 入库订单字段
+const IN_STORAGE_FIELD = [
+    {
+        type: 'text',
+        field: '单据号',
+        demo: 'RK2201260001',
+        fieldName: 'IN_CODE'
+    },
+    {
+        type: 'text',
+        field: '所属仓库',
+        demo: '中央仓库',
+        fieldName: 'WAREHOUSE'
+    },
+    {
+        type: 'text',
+        field: '计划入库日期',
+        demo: '2022-01-26',
+        fieldName: 'PLAN_IN_DATE'
+    },
+    {
+        type: 'text',
+        field: '入库类型',
+        demo: '采购入库',
+        fieldName: 'IN_TYPE'
+    },
+    {
+        type: 'text',
+        field: '数量合计',
+        demo: '100',
+        fieldName: 'IN_QUANTITY'
+    },
+    {
+        type: 'text',
+        field: '金额合计',
+        demo: '1000',
+        fieldName: 'TOTAL'
+    },
+    {
+        type: 'table',
+        dataset: '明细',
+        fields: [
+            {
+                type: 'text',
+                field: '产品名称',
+                demo: '保温杯',
+                fieldName: 'PRO_NAME',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品编码',
+                demo: 'P2201250001',
+                fieldName: 'PRO_CODE',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品规格',
+                demo: '20*40',
+                fieldName: 'PRO_SPEC',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品单位',
+                demo: '个',
+                fieldName: 'PRO_UNIT',
+                rule: '1'
+            },
+            {
+                type: 'text',
+                field: '库区',
+                demo: '库区',
+                fieldName: 'LOCATION_NAME',
+                rule: '1'
+            },
+            {
+                type: 'text',
+                field: '产品数量',
+                demo: '100',
+                fieldName: 'PRODUCT_QUANTITY'
+            },
+            {
+                type: 'text',
+                field: '关联单据',
+                demo: 'CG2201250001',
+                fieldName: 'RELATION_CODE'
+            },
+            {
+                type: 'text',
+                field: '产品单价',
+                demo: '100',
+                fieldName: 'PRICE'
+            },
+            {
+                type: 'text',
+                field: '产品备注',
+                demo: '备注',
+                fieldName: 'MEMO',
+                rule: 1
+            }
+        ]
+    }
+];
+
+// 9 申购单字段
+const SUBSCRIBE_FIELD = [
+    {
+        type: 'text',
+        field: '申购时间',
+        demo: '2022-01-25',
+        fieldName: 'APPLY_DATE'
+    },
+    {
+        type: 'text',
+        field: '申购类型',
+        demo: '其他申购',
+        fieldName: 'APPLY_TYPE'
+    },
+    {
+        type: 'text',
+        field: '申购单号',
+        demo: 'SG2201250001',
+        fieldName: 'APPLY_CODE'
+    },
+    {
+        type: 'text',
+        field: '审核时间',
+        demo: '2022-01-25',
+        fieldName: 'EDIT_TIME'
+    },
+    {
+        type: 'text',
+        field: '申购状态',
+        demo: '审核通过',
+        fieldName: 'APPLY_STATUS'
+    },
+    {
+        type: 'text',
+        field: '申购人',
+        demo: '张三',
+        fieldName: 'APPLY_PERSON'
+    },
+    {
+        type: 'text',
+        field: '数量合计',
+        demo: '100',
+        fieldName: 'TOTAL'
+    },
+    {
+        type: 'table',
+        dataset: '明细',
+        fields: [
+            {
+                type: 'text',
+                field: '名称',
+                demo: '玻璃',
+                fieldName: 'PRODUCT_NAME',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '编码',
+                demo: 'P2201050002',
+                fieldName: 'PRODUCT_CODE',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '规格',
+                demo: '20*40',
+                fieldName: 'PRODUCT_SPEC',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '单位',
+                demo: '个',
+                fieldName: 'PRO_UNIT',
+                rule: '1'
+            },
+            {
+                type: 'text',
+                field: '类型',
+                demo: '原材料',
+                fieldName: 'PRO_TYPE_VAL'
+            },
+            {
+                type: 'text',
+                field: '数量',
+                demo: '20',
+                fieldName: 'PRODUCT_QUANTITY'
+            },
+            {
+                type: 'text',
+                field: '关联单据',
+                demo: 'XS2201050002',
+                fieldName: 'SALES_CODE'
+            },
+            {
+                type: 'text',
+                field: '关联产品',
+                demo: '轮胎',
+                fieldName: 'PRO_CODE'
+            }
+        ]
+    }
+];
+
+// 10 委外字段
+const OUTSOURCING_FIELD = [
+    {
+        type: 'text',
+        field: '单据号',
+        demo: 'WW2206200003',
+        fieldName: 'OUTSOURCE_CODE'
+    },
+    {
+        type: 'text',
+        field: '委外商名称',
+        demo: '委外商',
+        fieldName: 'CS_NAME'
+    },
+    {
+        type: 'text',
+        field: '委外日期',
+        demo: '2022-06-20',
+        fieldName: 'OUTSOURCE_DATE'
+    },
+    {
+        type: 'text',
+        field: '委外数量',
+        demo: '100',
+        fieldName: 'OUTSOURCE_QUANTITY'
+    },
+    {
+        type: 'text',
+        field: '已入库数量',
+        demo: '100',
+        fieldName: 'PRODUCT_QUANTITY'
+    },
+    {
+        type: 'text',
+        field: '合同号',
+        demo: 'hth123456789',
+        fieldName: 'CONTRACT_CODE'
+    },
+    {
+        type: 'text',
+        field: '状态',
+        demo: '开立',
+        fieldName: 'STATUS'
+    },
+    {
+        type: 'text',
+        field: '跟单员',
+        demo: '跟单员',
+        fieldName: 'OUTSOURCE_PERSON'
+    },
+    {
+        type: 'text',
+        field: '是否开票',
+        demo: '否',
+        fieldName: 'IS_INVOICING'
+    },
+    {
+        type: 'text',
+        field: '备注',
+        demo: '备注',
+        fieldName: 'MEMO'
+    },
+    {
+        type: 'text',
+        field: '预定交期',
+        demo: '2022-06-25',
+        fieldName: 'SCHEDULED_DATE'
+    },
+    {
+        type: 'text',
+        field: '是否提供原料',
+        demo: '是',
+        fieldName: 'IS_FEED'
+    },
+    {
+        type: 'text',
+        field: '数量合计',
+        demo: '100',
+        fieldName: 'OUTSOURCE_QUANTITY'
+    },
+    {
+        type: 'text',
+        field: '金额合计',
+        demo: '1000',
+        fieldName: 'PAY_AMOUNT'
+    },
+    {
+        type: 'text',
+        field: '创建时间',
+        demo: '2022-07-10',
+        fieldName: 'CREATE_TIME'
+    },
+    {
+        type: 'table',
+        dataset: '明细',
+        fields: [
+            {
+                type: 'text',
+                field: '产品编码',
+                demo: 'P220107000',
+                fieldName: 'PRO_CODE',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品名称',
+                demo: '轮胎',
+                fieldName: 'PRO_NAME',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品规格',
+                demo: '100',
+                fieldName: 'PRO_SPEC',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品单位',
+                demo: '个',
+                fieldName: 'PRO_UNIT',
+                rule: '1'
+            },
+            {
+                type: 'text',
+                field: '产品数量',
+                demo: 7200,
+                fieldName: 'OUTSOURCE_QUANTITY',
+                rule: '1'
+            },
+            {
+                type: 'text',
+                field: '产品单价',
+                demo: 50,
+                fieldName: 'OUTSOURCE_PRICE'
+            },
+            {
+                type: 'text',
+                field: '付款状态',
+                demo: '付款中',
+                fieldName: 'PAY_STATUS'
+            },
+            {
+                type: 'text',
+                field: '关联单据',
+                demo: 'XS2206150001',
+                fieldName: 'SALES_CODE'
+            },
+            {
+                type: 'text',
+                field: '计划交货日期',
+                demo: '2022-06-22',
+                fieldName: 'PLAN_DATE'
+            },
+            {
+                type: 'text',
+                field: '备注',
+                demo: '备注',
+                fieldName: 'MEMO',
+                rule: 1
+            }
+        ]
+    }
+];
+
+
+// 11 备货字段
+const STOCK_UP_FIELD = [
+    {
+        type: 'text',
+        field: '客户名称',
+        demo: '客户名称',
+        fieldName: 'CUS_NAME'
+    },
+    {
+        type: 'text',
+        field: '生产工单号',
+        demo: 'GD0262',
+        fieldName: 'ORDER_CODE'
+    },
+    {
+        type: 'text',
+        field: '产品名称',
+        demo: '产品名称',
+        fieldName: 'PRO_NAME'
+    },
+    {
+        type: 'text',
+        field: '规格',
+        demo: '规格',
+        fieldName: 'PRO_SPEC'
+    },
+    {
+        type: 'text',
+        field: '花型',
+        demo: '花型',
+        fieldName: 'PATTERN_NAME'
+    },
+    {
+        type: 'text',
+        field: '状态',
+        demo: '状态',
+        fieldName: 'STATUS_VAL'
+    },
+    {
+        type: 'text',
+        field: '生产开始日期',
+        demo: '2022-05-28',
+        fieldName: 'CREATE_TIME'
+    },
+    {
+        type: 'text',
+        field: '计划量',
+        demo: '10',
+        fieldName: 'PLAN_QUANTITY'
+    },
+    {
+        type: 'text',
+        field: '关联出库单',
+        demo: '出库单',
+        fieldName: 'OUT_STORAGE_RE'
+    },
+	{
+        type: 'text',
+        field: '备注',
+        demo: '备注',
+        fieldName: 'MEMO'
+    },
+    {
+        type: 'table',
+        dataset: '明细',
+        fields: [
+            {
+                type: 'text',
+                field: '材料编码',
+                demo: 'P2205280003',
+                fieldName: 'PRO_CODE',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '材料名称',
+                demo: '玻璃',
+                fieldName: 'MATERIAL_NAME',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '材料规格',
+                demo: '规格',
+                fieldName: 'MATERIAL_SPEC',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '需求数量',
+                demo: '100',
+                fieldName: 'NEED_QUANTITY',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '仓库',
+                demo: '100',
+                fieldName: 'WAREHOUSE_NAME',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '库区',
+                demo: '100',
+                fieldName: 'LOCATION_NAME',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '库存量',
+                demo: '100',
+                fieldName: 'QUANTITY',
+                rule: 1
+            }
+        ]
+    }
+];
+
+
+// 11 批量硫化条码
+const BATCH_PRODUCT_FIELD = [
+    {
+        type: 'text',
+        field: 'SN1',
+        demo: 'SN123',
+        fieldName: 'SN1'
+    },
+    {
+        type: 'text',
+        field: 'SN2',
+        demo: 'SN456',
+        fieldName: 'SN2'
+
+    },
+    {
+        type: 'text',
+        field: 'SN3',
+        demo: 'SN789',
+        fieldName: 'SN3'
+    }
+];
+
+//12 生产派工单
+const GO_PRODUCT_FIELD = [
+    {
+        type: 'table',
+        dataset: '派工单',
+        fields: [
+            {
+                type: 'text',
+                field: '派工单号',
+                demo: 'GD001',
+                fieldName: 'ORDER_CODE',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品编码',
+                demo: '001',
+                fieldName: 'PRO_CODE',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品名称',
+                demo: '皮囊',
+                fieldName: 'PRO_NAME',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '产品规格',
+                demo: 'L-7',
+                fieldName: 'PRO_SPEC',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '计划数量',
+                demo: '100',
+                fieldName: 'PLAN_QUANTITY',
+                rule: 1
+            },
+            {
+                type: 'text',
+                field: '备注',
+                demo: '加大',
+                fieldName: 'MEMO',
+                rule: 1
+            }
+        ]
+    }
+    /*{
+        type: 'text',
+        field: '派工单号',
+        demo: 'GD001',
+        fieldName: 'ORDER_CODE',
+        
+    },
+    {
+        type: 'text',
+        field: '产品编码',
+        demo: '001',
+        fieldName: 'PRO_CODE',
+        
+    },
+    {
+        type: 'text',
+        field: '产品名称',
+        demo: '皮囊',
+        fieldName: 'PRO_NAME',
+        
+    },
+    {
+        type: 'text',
+        field: '产品规格',
+        demo: 'L-7',
+        fieldName: 'PRO_SPEC',
+        
+    },
+    {
+        type: 'text',
+        field: '计划数量',
+        demo: '100',
+        fieldName: 'PLAN_QUANTITY',
+        
+    },
+    {
+        type: 'text',
+        field: '备注',
+        demo: '加大',
+        fieldName: 'MEMO',
+        
+    }*/
+];
+
+
+// 13 员工二维码
+const USERINFO_FIELD = [
+    {
+        type: 'text',
+        field: '员工工号',
+        demo: '7030080',
+        fieldName: 'LOGIN_NAME'
+    },
+    {
+        type: 'text',
+        field: '员工姓名',
+        demo: '洪伟',
+        fieldName: 'VNAME'
+    }
+];
+
+// 14 仓库二维码
+const WAREHOUSE_FIELD = [
+    {
+        type: 'text',
+        field: '仓库编码',
+        demo: 'CK2308090001',
+        fieldName: 'WAREHOUSE_CODE'
+    },
+    {
+        type: 'text',
+        field: '仓库名称',
+        demo: '半成品仓库',
+        fieldName: 'WAREHOUSE_NAME'
+    }
+];
+
+// 15 库位二维码
+const WAREHOUSE_LOCATION_FIELD = [
+    {
+        type: 'text',
+        field: '库位编码',
+        demo: 'KW2308090003',
+        fieldName: 'LOCATION_CODE'
+    },
+    {
+        type: 'text',
+        field: '库位名称',
+        demo: 'A3',
+        fieldName: 'LOCATION_NAME'
+    }
+];
+
+// 16 场地二维码
+const WAREHOUSE_SITE_FIELD = [
+    {
+        type: 'text',
+        field: '场地编码',
+        demo: 'CD2310200010',
+        fieldName: 'SITE_CODE'
+    },
+    {
+        type: 'text',
+        field: '场地名称',
+        demo: '测试场地',
+        fieldName: 'SITE_NAME'
+    }
+];
+
+/*// 2 设备预览数据
+const EQUIPMENT_PREVIEW_DEMO = [getPreviewDataDemo(EQUIPMENT_FIELD)];
+
+// 3 模具预览数据
+const MOULD_PREVIEW_DEMO = [getPreviewDataDemo(MOULD_FIELD)];
+
+// 4 生产工单预览数据
+const PRODUCTION_PREVIEW_DEMO = [getPreviewDataDemo(PRODUCTION_FIELD)];
+
+// 5 采购单预览数据
+const PURCHASE_PREVIEW_DEMO = [getPreviewDataDemo(PURCHASE_FIELD)];
+
+// 6 销售单预览数据
+const SALES_PREVIEW_DEMO = [getPreviewDataDemo(SALES_FIELD)];
+
+// 7 出库订单预览数据
+const OUT_STORAGE_PREVIEW_DEMO = [getPreviewDataDemo(OUT_STORAGE_FIELD)];
+
+// 8 入库订单预览数据
+const IN_STORAGE_PREVIEW_DEMO = [getPreviewDataDemo(IN_STORAGE_FIELD)];*/
+
+// 现在的模板类型type
+
+/* scm
+// 1是标签模板
+// 2是外发 -- 单据
+// 3是销售 -- 单据
+// 4是送货 -- 单据
+// 5是自由模板设计
+// 6是入库 -- 单据
+*/
+// 根据类型把字段存放到数组中
+const FIELD_LIST = [
+	'',
+    MATERIAL_FIELD,
+    EQUIPMENT_FIELD,
+    MOULD_FIELD,
+    PRODUCTION_FIELD,
+    PURCHASE_FIELD,
+    SALES_FIELD,
+    OUT_STORAGE_FIELD,
+    IN_STORAGE_FIELD,
+    SUBSCRIBE_FIELD,
+    OUTSOURCING_FIELD,
+    //STOCK_UP_FIELD,
+    BATCH_PRODUCT_FIELD,
+    GO_PRODUCT_FIELD,
+    USERINFO_FIELD,
+    WAREHOUSE_FIELD,
+    WAREHOUSE_LOCATION_FIELD,
+    WAREHOUSE_SITE_FIELD
+];
+
+const PREVIEW_DEMO_LIST = FIELD_LIST.map(v => {
+	return v ? [getPreviewDataDemo(v)] : '';
+});
+
+/**
+ * @function 通过接口返回的数据转换成预览数据
+ * @param {Object} data 接口返回的数据
+ * @param {Number} type 模板类型
+ */
+function getPreviewDataByData(data, type) {
+    console.info(data);
+    let invoicesList = FIELD_LIST;
+    let arr = [];
+    data.head.forEach((value, index) => {
+        let result = {};
+        invoicesList[type].forEach(v => {
+            // 遍历单据明细数据
+            if (v.type === 'table') {
+                let arr = [];
+                if (data.body != undefined){
+                // 遍历data.body
+                Array.from({ length: data.body.length }, (v1, i1) => {
+                    let obj = {};
+                    v.fields.forEach(v2 => {
+                        obj[v2.field] = data.body[i1][v2.fieldName];
+                        if(v2.fieldName === 'serial_number') obj[v2.field] = i1 + 1;
+                    });
+                    arr.push(obj);
+                });
+                } else {
+                // 遍历data.head
+                Array.from({ length: data.head.length }, (v1, i1) => {
+                    let obj = {};
+                    v.fields.forEach(v2 => {
+                        obj[v2.field] = data.head[i1][v2.fieldName];
+                        if(v2.fieldName === 'serial_number') obj[v2.field] = i1 + 1;
+                    });
+                    arr.push(obj);
+                });
+                }
+                result[v.dataset] = arr;
+                return;
+            }
+            // 赋值单据数据
+            result[v.field] = data.head[index][v.fieldName];
+        });
+        arr.push(result);
+    })
+    return arr;
+}
+
+
+/**
+ * @function 获取预览案例数据
+ * @param {Array} data
+ * @param {Number} index 主要用来给明细累加
+ */
+function getPreviewDataDemo(data, index) {
+    let obj = {};
+    data.forEach((v, i) => {
+        if (v.type === 'table') {
+            let arr = [];
+            Array.from({ length: 5 }, (value, index) =>
+                arr.push(getPreviewDataDemo(v.fields, index))
+            );
+            obj[v.dataset] = arr;
+        } else {
+            let demo = v.demo;
+            let rules = { index };
+            if (index && v.rule) {
+                demo += rules[v.rule] || v.rule * index;
+            }
+            obj[v.field] = demo;
+        }
+    });
+    return obj;
+}
